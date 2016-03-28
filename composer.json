@@ -1,0 +1,42 @@
+{
+    "name": "mathijs/monads",
+    "type": "library",
+    "description": "My implementation of some common monads in PHP.",
+    "keywords": [
+        "Monads"
+    ],
+    "homepage": "https://github.com/mbernson/monads",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mathijs Bernson",
+            "email": "mathijs.bernson@gmail.com",
+            "homepage": "https://duckson.nl",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "~5.5|~7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Duckson\\Monads\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Duckson\\Monads\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
