@@ -2,9 +2,8 @@
 
 use Duckson\Monads\Optional;
 
-class MaybeMonadTest extends PHPUnit_Framework_TestCase
-{
-    function testOperationsOnNull() {
+class OptionalTest extends PHPUnit_Framework_TestCase {
+    public function testOperationsOnNull() {
         $maybe = new Optional(null);
         $maybe->bind(function($value) {
             self::fail('Bind should not be called on null');
@@ -28,7 +27,7 @@ class MaybeMonadTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider legalValuesProvider
      */
-    function testBindOnValue($legalValue) {
+    public function testBindOnValue($legalValue) {
         $maybe = new Optional($legalValue);
         $maybe->bind(function($value) use ($legalValue) {
             self::assertNotNull($value);
@@ -36,7 +35,7 @@ class MaybeMonadTest extends PHPUnit_Framework_TestCase
         });
     }
 
-    function testBindSugarOnValue() {
+    public function testBindSugarOnValue() {
         $value = new stdClass;
         $value->test = 'test';
         $maybe = new Optional($value);

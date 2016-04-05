@@ -14,12 +14,10 @@ final class Person {
     }
 }
 
-class ManyTest extends PHPUnit_Framework_TestCase
-{
+class ManyTest extends PHPUnit_Framework_TestCase {
     private $people;
 
-    protected function setUp()
-    {
+    protected function setUp() {
         parent::setUp();
         $this->people = [
             new Person('Jip'),
@@ -30,7 +28,7 @@ class ManyTest extends PHPUnit_Framework_TestCase
         ];
     }
 
-    function testManyBind() {
+    public function testManyBind() {
         $many = new Many($this->people);
         $names = $many->bind(function($person) {
             return $person->getName();
@@ -42,8 +40,7 @@ class ManyTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Klaas', $names[4]);
     }
 
-
-    function testManyBindSugar() {
+    public function testManyBindSugar() {
         $many = new Many($this->people);
         $names = $many->getName()->value();
 
