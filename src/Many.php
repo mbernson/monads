@@ -10,30 +10,8 @@ function array_flatten($arg) {
     }
 }
 
-class Many implements Monad {
-    protected $values;
-
-    public function __construct(array $values) {
-        $this->values = $values;
-    }
-
-    public function bind(callable $fn) {
-        return new Many(array_flatten(array_map($fn, $this->values)));
-    }
-
-    public function __call($name, array $arguments) {
-        return $this->bind(function($value) use ($name, $arguments) {
-            return $value->$name(...$arguments);
-        });
-    }
-
-    public function __get($name) {
-        return $this->bind(function($value) use ($name) {
-            return $value->$name;
-        }, $this->values);
-    }
-
-    public function value() {
-        return $this->values;
+class Many extends BaseMonad implements Monad {
+    public function bind(callable $fn, ...$args) {
+        return new Many(array_flatten(array_map($fn, $this->value)));
     }
 }

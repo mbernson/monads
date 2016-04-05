@@ -12,7 +12,7 @@ interface Monad {
      * @param callable $fn
      * @return static
      */
-    public function bind(callable $fn);
+    public function bind(callable $fn, ...$args);
 
     /**
      * Returns the unwrapped value from the monad.
