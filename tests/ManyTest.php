@@ -2,22 +2,27 @@
 
 use Duckson\Monads\Many;
 
-final class Person {
+final class Person
+{
     private $name;
 
-    public function __construct($name) {
+    public function __construct($name)
+    {
         $this->name = $name;
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 }
 
-class ManyTest extends PHPUnit_Framework_TestCase {
+class ManyTest extends PHPUnit_Framework_TestCase
+{
     private $people;
 
-    protected function setUp() {
+    protected function setUp()
+    {
         parent::setUp();
         $this->people = [
             new Person('Jip'),
@@ -28,9 +33,10 @@ class ManyTest extends PHPUnit_Framework_TestCase {
         ];
     }
 
-    public function testManyBind() {
+    public function testManyBind()
+    {
         $many = new Many($this->people);
-        $names = $many->bind(function($person) {
+        $names = $many->bind(function ($person) {
             return $person->getName();
         })->value();
 
@@ -40,7 +46,8 @@ class ManyTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('Klaas', $names[4]);
     }
 
-    public function testManyBindSugar() {
+    public function testManyBindSugar()
+    {
         $many = new Many($this->people);
         $names = $many->getName()->value();
 
@@ -50,4 +57,3 @@ class ManyTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('Klaas', $names[4]);
     }
 }
-

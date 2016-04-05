@@ -1,6 +1,7 @@
 <?php namespace Duckson\Monads;
 
-interface Monad {
+interface Monad
+{
     /**
      * Bind an operation to the monad object that transforms its value.
      * The `bind()` function will unwrap the monadic value, and feeds it to the transformer function.
