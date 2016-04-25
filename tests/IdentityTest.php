@@ -51,4 +51,10 @@ class IdentityTest extends PHPUnit_Framework_TestCase
         $identity = new Identity($value);
         $this->assertEquals('test', $identity->test->value());
     }
+
+    public function testUnwrappingMultipleMonads()
+    {
+        $m = new Identity(new Identity(new Identity('foo')));
+        $this->assertEquals('foo', $m->value());
+    }
 }

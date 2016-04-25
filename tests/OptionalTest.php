@@ -8,7 +8,7 @@ class OptionalTest extends PHPUnit_Framework_TestCase
     {
         $maybe = new Optional(null);
         $maybe->bind(function ($value) {
-            self::fail('Bind should not be called on null');
+            self::fail('Bind should never be called on null');
         });
     }
 
@@ -19,10 +19,12 @@ class OptionalTest extends PHPUnit_Framework_TestCase
             [false],
             [''],
             ['Something'],
+            ['null'],
             [123],
             [0],
             [1],
             [-1],
+            [[1, 'a', false]],
             [new stdClass()],
         ];
     }
@@ -39,11 +41,23 @@ class OptionalTest extends PHPUnit_Framework_TestCase
         });
     }
 
-    public function testBindSugarOnValue()
+    /**
+     * @dataProvider legalValuesProvider
+     */
+    public function testBindSugarOnValue($legalValue)
     {
         $value = new stdClass;
-        $value->test = 'test';
+        $value->test = $legalValue;
         $maybe = new Optional($value);
-        $this->assertEquals('test', $maybe->test->value());
+        $this->assertEquals($legalValue, $maybe->test->value());
+    }
+
+    /**
+     * @dataProvider legalValuesProvider
+     */
+    public function testUnwrappingMultipleMonads($legalValue)
+    {
+        $m = new Optional(new Optional(new Optional($legalValue)));
+        $this->assertEquals($legalValue, $m->value());
     }
 }

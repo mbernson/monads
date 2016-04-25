@@ -139,10 +139,8 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/Duckson/Monads.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/Duckson/Monads.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/Duckson/Monads
-[link-travis]: https://travis-ci.org/Duckson/Monads
-[link-scrutinizer]: https://scrutinizer-ci.com/g/Duckson/Monads/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/Duckson/Monads
-[link-downloads]: https://packagist.org/packages/Duckson/Monads
+[link-packagist]: https://packagist.org/packages/duckson/monads
+[link-travis]: https://travis-ci.org/mbernson/monads
+[link-downloads]: https://packagist.org/packages/duckson/monads
 [link-author]: https://github.com/mbernson
 [link-contributors]: ../../contributors
